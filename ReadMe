@@ -1,1 +1,15 @@
-
+docker in ec2 :
+Launch Ubuntu EC2 instance (allow ports 22 & 80)
+ssh -i keypair.pem ubuntu@<EC2-Public-IP>
+sudo apt update -y
+sudo apt install docker.io -y
+sudo systemctl start docker
+sudo systemctl enable docker
+docker --version
+sudo usermod -aG docker ubuntu
+Logout and login again
+docker pull nginx
+docker images
+docker run -d -p 80:80 --name webserver nginx
+docker ps
+Open browser → http://<EC2-Public-IP>
