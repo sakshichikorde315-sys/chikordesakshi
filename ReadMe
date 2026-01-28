@@ -14,3 +14,15 @@ docker images
 docker run -d -p 80:80 --name webserver nginx
 docker ps
 Open browser → http://<EC2-Public-IP>
+
+
+only docker commands:
+serach hello world open terminal
+docker pull hello-world
+docker images
+docker run hello-world //prints hello world docker 
+
+to delete:
+docker rmi hello-world //this will generate a numper copy that
+docker rm that number
+docker rmi hello-world
