@@ -1,6 +1,7 @@
 docker in ec2 :
 Launch Ubuntu EC2 instance (allow ports 22 & 80)
-ssh -i keypair.pem ubuntu@<EC2-Public-IP>
+ssh -i keypair.pem ubuntu@<EC2-Public-IP> or git clone git@github.com:sakshichikorde315-sys/sakshi.git
+
 sudo apt update -y
 sudo apt install docker.io -y
 sudo systemctl start docker
