@@ -1,14 +1,5 @@
-Skip to content
-Chat history
-
-
-ChatGPT said:
-Perfect 👍
-Below is EVERYTHING in ONE PLACE, written so you can follow it on your computer without switching chats.
-This is lab / assignment / exam-ready.
-
-✅ COMPLETE STEPS: Java Application → Docker → Verify Output (VS Code)
-🔹 STEP 0: Prerequisites (Check once)
+COMPLETE STEPS: Java Application → Docker → Verify Output (VS Code)
+STEP 0: Prerequisites (Check once)
 Open VS Code → Terminal and run:
 
 java --version
