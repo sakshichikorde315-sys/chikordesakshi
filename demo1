@@ -1,1 +1,100 @@
+Skip to content
+Chat history
+
+
+ChatGPT said:
+Perfect 👍
+Below is EVERYTHING in ONE PLACE, written so you can follow it on your computer without switching chats.
+This is lab / assignment / exam-ready.
+
+✅ COMPLETE STEPS: Java Application → Docker → Verify Output (VS Code)
+🔹 STEP 0: Prerequisites (Check once)
+Open VS Code → Terminal and run:
+
+java --version
+docker --version
+✔ If both show versions → OK
+If Java missing → install JDK 17
+If Docker missing → install Docker Desktop
+ STEP 1: Create Project Folder
+mkdir java-docker-app
+cd java-docker-app
+Open this folder in VS Code
+(File → Open Folder → java-docker-app)
+ STEP 2: Create App.java (VS Code)
+Right-click folder → New File
+Name it:
+App.java
+Paste this code:
+public class App {
+    public static void main(String[] args) {
+        System.out.println("Java application running successfully in Docker!");
+    }
+}
+Save the file.
+
+🔹 STEP 3: Test Java Application (Local)
+javac App.java
+java App
+✔ Output:
+
+Java application running successfully in Docker!
+🔹 STEP 4: Create Dockerfile (VS Code)
+Right-click folder → New File
+
+Name it:
+
+Dockerfile
+Paste this (IMPORTANT: use Temurin, not openjdk):
+
+FROM eclipse-temurin:17
+WORKDIR /app
+COPY App.java .
+RUN javac App.java
+CMD ["java", "App"]
+Save the file.
+
+🔹 STEP 5: Verify Folder Structure
+ls
+You should see:
+
+App.java
+Dockerfile
+🔹 STEP 6: Build Docker Image
+docker build -t java-docker-app .
+✔ Success message:
+
+Successfully built ...
+🔹 STEP 7: Run Docker Container
+docker run java-docker-app
+✔ Output:
+
+Java application running successfully in Docker!
+🎉 Dockerized Java application is working
+
+🧠 WHAT YOU ACHIEVED (For Exam / Viva)
+ Created Java application
+Built Docker image
+Ran container successfully
+Verified output
+One-line explanation:
+Docker ensures consistent Java application deployment by packaging the code and runtime into a portable container.
+FROM eclipse-temurin:17
+wrong:javac not found
+correct:Use JDK image, not JRE
+
+Class App is public, should be declared in a file named App.java
+correct:File name must match class name
+OPTIONAL NEXT STEPS (Tell me if you want)
+1️ Push image to Docker Hub
+2️Run container on AWS EC2
+3️Add Jenkins CI pipeline
+4️Convert to Spring Boot
+5️Write lab record / experiment answer
+
+
+
+
+
+
 
