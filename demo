@@ -1,5 +1,36 @@
 Java based website and create github workflow::
-1.Create Java Project
+1.Create Java Project java-ci-projec->pom.xml->src folder->main folder->java folder->java (hello.java ) file.
+public class Hello 
+{
+    public static void main(String[] args) {
+        System.out.println("Build Successful");
+    }
+}
+
+pom.xml file:
+
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>java-ci</artifactId>
+    <version>1.0</version>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+
 Make a simple Maven project with pom.xml and Hello.java
 Hello.java prints “Build Successful”
 2.push code to git:
@@ -10,9 +41,38 @@ git branch -M main
 git remote add origin <repo-url>
 git push -u origin main
 3.Add GitHub Actions
-Create folder: .github/workflows(Inside your project, create a folder:.github/workflows,Inside that folder, create a file named:maven-build.yml)
-
+Create folder: .github/workflows(Inside your project, create a folder:.github/workflows,
+Inside that folder, create a file named:maven-build.yml)
 Create file: maven-build.yml
+
+create .github folder in java-ci-project-> create wrokflows folder->inside create maven-build.yml text file.
+
+in yml paste this:
+name: Java Maven Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Java
+      uses: actions/setup-java@v4
+      with:
+        java-version: '8'
+        distribution: 'temurin'
+
+    - name: Build project
+      run: mvn clean package
+
+
 4.Configure Workflow:
 name: Java Maven Build
 on: push:
@@ -32,3 +92,11 @@ jobs:
 git add .github/workflows/maven-build.yml
 git commit -m "Add workflow"
 git push
+
+if rejected: paste this :
+git pull origin main --allow-unrelated-histories
+git add .
+git commit -m "Merge local with remote"
+git push -u origin main
+or just this:git push -u origin main --force
+
